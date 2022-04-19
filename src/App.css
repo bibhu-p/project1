@@ -141,3 +141,8 @@ h1 {
   text-align: center;
   margin: 30px 15px;
 }
+.home-body{
+  background-color: #DDDDDD;
+  width: 100vw;
+  height: 100vh;
+}
