@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
 @import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
+
+
+input:focus{
+  box-shadow: none !important;
+  border:1px solid black !important;
+  background: #e8f0fe !important; 
+}
+
 .error-container {
   text-align: center;
   font-size: 180px;
@@ -50,7 +58,6 @@
 	   -moz-transform: rotate(45deg);
 			transform: rotate(45deg);
 }
-
 .screen-reader-text {
     position: absolute;
     top: -9999em;
@@ -132,6 +139,7 @@
 .error-body {
   background-color: #416475;
   height: 100vh;
+  overflow: hidden;
 }
 html, button, input, select, textarea {
     font-family: 'Montserrat', Helvetica, sans-serif;
@@ -141,8 +149,21 @@ h1 {
   text-align: center;
   margin: 30px 15px;
 }
-.home-body{
-  background-color: #DDDDDD;
-  width: 100vw;
+.page-body{
+  background-color: #d5d8df;
   height: 100vh;
+}
+.home-body{
+  background-color: #ffffff;
+  width: 350px;
+  height: 500px;
+}
+.clr{
+  background: #dbe2ee;
+}
+.login-btn{
+  background: #718096
+}
+.login-btn:hover{
+  background: #343c47 ;
 }
