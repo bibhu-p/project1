@@ -1,8 +1,8 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import {Home} from './Components/Home' 
+import Home from './Components/Home' 
 import Login from './Components/Login' 
 import RegisterModal from './Components/RegisterModal' 
-import {ErrorPage} from './Components/ErrorPage' 
+import ErrorPage from './Components/ErrorPage' 
 
 function App() {
   return (
