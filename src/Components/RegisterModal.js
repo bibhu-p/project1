@@ -63,21 +63,17 @@ const RegisterModal =(props) =>{
       return;
     }
 
+    setSpinner(true);
     
     axios.post('http://localhost:5000/api/user/register', regFormValues)
     .then(function (response) {
-      
-       console.log(response);
+      setSpinner(false)
+      console.log(response);
     })
     .catch(function (error) {
+      setSpinner(false)
       return console.log(error);
     });
-// console.log(regFormValues);
-    setSpinner(true);
-
-    // setTimeout(()=>{
-    //   setSpinner(false)
-    // }, 2000 )
 
   };
 

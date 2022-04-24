@@ -115,7 +115,7 @@ const Login = () => {
                     </button>
                   </div>
             </form>
-            <span className="mt-2 text-center text-muted " style={{'fontSize':'.9rem'}}>New User?<button onClick={onRegister} className='btn reg-btn text-secondary'>Register</button></span>
+            <span className="mt-2 text-center text-muted " style={{'fontSize':'.9rem'}}>New User?<button onClick={onRegister} className='btn reg-btn mb-1 text-secondary'>Register</button></span>
         </div>
       </div>
       
