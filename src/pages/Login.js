@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Spinner} from 'react-bootstrap'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HiOutlineLogin } from "react-icons/hi";
 import '../App.css'
-import RegisterModal from './RegisterModal';
+import RegisterModal from '../Components/RegisterModal';
 const Login = () => {
 
+  const navigate = useNavigate();
   const [spinner, setSpinner] = useState(false);
   const [show, setShow] = useState(false);
   const [loginType, setLoginType] = useState(false);
@@ -60,7 +61,11 @@ const Login = () => {
     .then(function (response) {
       setSpinner(false)
       clear()
+      localStorage.setItem("loggedInData", JSON.stringify(response.data.data));
+      localStorage.setItem("authToken", JSON.stringify(response.data.token));
       console.log(response);
+      navigate("/admin/dashboard");
+      
     })
     .catch(function (error) {
       setSpinner(false)
@@ -73,7 +78,11 @@ const Login = () => {
     .then(function (response) {
       setSpinner(false)
       clear()
+      localStorage.setItem("loggedInData", JSON.stringify(response.data.data));
+      localStorage.setItem("authToken", JSON.stringify(response.data.token));
       console.log(response);
+      navigate("/user/dashboard");
+
     })
     .catch(function (error) {
       setSpinner(false)

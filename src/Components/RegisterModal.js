@@ -280,8 +280,8 @@ const RegisterModal =(props) =>{
           <Button className='btn-light cls-btn' onClick={props.handleClose}>
             Close
           </Button>
-          <Button className=' ms-2 login-btn border-0' onClick={()=>{props.loginType? adminRegister(): userRegister()}}>
-  {spinner? <Spinner animation="border" size="sm" variant="light"/>:<span className='text-white font-monospace ms-2 fw-bold'>Register</span>}
+          <Button className=' register-btn border-0 w-25 rounded-3' onClick={()=>{props.loginType? adminRegister(): userRegister()}}>
+  {spinner? <Spinner animation="border" size="sm" variant="light"/>:<span className='text-white ms-2 '>Register</span>}
           </Button>
         </Modal.Footer>
       </Modal>

@@ -16,9 +16,7 @@
 .reg-btn{
   transition: all 0.3s ease-in-out;
 }
-.cls-btn:hover{
-  font-weight: 600;
-}
+
 .reg-btn:hover{
   transform: translateY(-5px); 
   transition: all 0.3s ease-in-out; 
@@ -49,7 +47,20 @@ input[type = text],input[type=password]{
 .login-btn:hover{
   background: #343c47 ;
 }
-
+.register-btn{
+  background: #718096;
+}
+.register-btn:hover{
+  background: #343c47 ;
+  font-weight: 600;
+}
+.cls-btn{
+  font-weight: 400;
+}
+.cls-btn:hover{
+  background: #eceef3;
+  font-weight: 600;
+}
 /* Error Page */
 .error-container {
   text-align: center;
