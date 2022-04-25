@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const AllUsers =()=>{
-    // const data = localStorage.getItem('authToken');
-    // console.log(typeof(data));
+    const data = localStorage.getItem('authToken');
+    console.log(typeof(data));
 
-    axios.get('http://localhost:5000/api/user/find')
+    axios.get(`http://localhost:5000/api/user/find`)
     .then(function (response) {
     //   setSpinner(false)
     //   clear()
