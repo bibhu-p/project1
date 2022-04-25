@@ -12,7 +12,7 @@ function NavBar() {
         localStorage.clear();
     }
     return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
             <div class="container-fluid d-flex justify-content-between">
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

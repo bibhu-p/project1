@@ -4,15 +4,15 @@ const SideBar=() =>{
   
   return (
       
-        <div class=" d-flex flex-column w-25  bg-secondary  align-items-center min-vh-100">
-            <div className='mt-3'>
-            <Link to="/admin/dashboard" className=" text-decoration-none">DashBoard</Link>
+        <div class=" container d-flex flex-column w-25  bg-secondary  align-items-center min-vh-100 rounded-3 ">
+            <div className='mt-3  p-2 w-100 bg-dark d-flex justify-content-center rounded-3'>
+            <Link to="/admin/dashboard" className="text-decoration-none fs-4">DashBoard</Link>
             </div>
-            <div className='mt-3'>
-            <Link to="/admin/users" className=" text-decoration-none" >Users</Link>
+            <div className='mt-3  p-2 w-100 bg-dark d-flex justify-content-center rounded-3'>
+            <Link to="/admin/users" className=" text-center text-decoration-none fs-4" >Users</Link>
             </div>
-            <div className='mt-3'>
-            <Link to="/admin/movies" className=" text-decoration-none" >Movies</Link>
+            <div className='mt-3  p-2 w-100 bg-dark d-flex justify-content-center rounded-3'>
+            <Link to="/admin/movies" className=" text-decoration-none fs-4" >Movies</Link>
             </div>
         </div>
     
