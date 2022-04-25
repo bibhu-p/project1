@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Spinner} from 'react-bootstrap'
 import { Link } from "react-router-dom";
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HiOutlineLogin } from "react-icons/hi";
 import '../App.css'
@@ -9,6 +10,7 @@ const Login = () => {
 
   const [spinner, setSpinner] = useState(false);
   const [show, setShow] = useState(false);
+  const [loginType, setLoginType] = useState(false);
   const [formValues, setFormValues] = useState({
     email:'',
     password:''
@@ -29,7 +31,9 @@ const Login = () => {
   const onRegister = () =>{
     setShow(true)
   }
-
+  const clear = ()=>{
+    setFormValues({...formValues, email:'', password:''});
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,9 +55,35 @@ const Login = () => {
     // code for login
     setSpinner(true);
 
-    setTimeout(()=>{
+    if(loginType ){
+    axios.post('http://localhost:5000/api/admin/login', formValues)
+    .then(function (response) {
       setSpinner(false)
-    }, 2000 )
+      clear()
+      console.log(response);
+    })
+    .catch(function (error) {
+      setSpinner(false)
+      clear()
+      return console.log(error);
+    })
+  }else{
+    // console.log(loginType);
+    axios.post('http://localhost:5000/api/user/login', formValues)
+    .then(function (response) {
+      setSpinner(false)
+      clear()
+      console.log(response);
+    })
+    .catch(function (error) {
+      setSpinner(false)
+      clear()
+      return console.log(error);
+    });
+  }
+    // setTimeout(()=>{
+    //   setSpinner(false)
+    // }, 2000 )
 
   };
   return (
@@ -65,13 +95,13 @@ const Login = () => {
 
           <div className='d-flex flex-row justify-content-evenly mb-3 p-1'>
             <div className="form-check">
-              <input className="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" />
+              <input className="form-check-input" type="radio" name="flexRadioDisabled" onChange={(e)=>setLoginType(true)} />
               <label className="form-check-label" for="flexRadioDisabled">
                 ADMIN
               </label>
             </div>
             <div className="form-check">
-              <input className="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" defaultChecked />
+              <input className="form-check-input" type="radio" name="flexRadioDisabled" onChange={(e)=>setLoginType(false)} defaultChecked />
               <label className="form-check-label" for="flexRadioCheckedDisabled">
                 USER
               </label>
@@ -115,13 +145,14 @@ const Login = () => {
                     </button>
                   </div>
             </form>
-            <span className="mt-2 text-center text-muted " style={{'fontSize':'.9rem'}}>New User?<button onClick={onRegister} className='btn reg-btn mb-1 text-secondary'>Register</button></span>
+            <span className="mt-2 text-center text-muted " style={{'fontSize':'.9rem'}}>New User?<button onClick={onRegister} className='btn reg-btn text-secondary'>Register</button></span>
         </div>
       </div>
       
       {show && <RegisterModal 
         show = {show}
         handleClose = {handleClose}
+        loginType = {loginType}
       />}
     </> 
   );
