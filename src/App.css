@@ -16,7 +16,6 @@
 .reg-btn{
   transition: all 0.3s ease-in-out;
 }
-
 .reg-btn:hover{
   transform: translateY(-5px); 
   transition: all 0.3s ease-in-out; 
@@ -61,150 +60,60 @@ input[type = text],input[type=password]{
   background: #eceef3;
   font-weight: 600;
 }
-/* Error Page */
-.error-container {
-  text-align: center;
-  font-size: 180px;
-  font-family: 'Catamaran', sans-serif;
-  font-weight: 800;
-  margin: 20px 15px;
-}
-.error-container > span {
-  display: inline-block;
-  line-height: 0.7;
-  position: relative;
-  color: #FFB485;
-}
-.error-container > span {
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-}
-.error-container > span:nth-of-type(1) {
-  color: #D1F2A5;
-  animation: colordancing 4s infinite;
-}
-.error-container > span:nth-of-type(3) {
-  color: #F56991;
-  animation: colordancing2 4s infinite;
-}
-.error-container > span:nth-of-type(2) {
-  width: 120px;
-  height: 120px;
-  border-radius: 999px;
-}
-.error-container > span:nth-of-type(2):before,
-.error-container > span:nth-of-type(2):after {
-	border-radius: 0%;
-	content:"";
-	position: absolute;
-	top: 0; left: 0;
-	width: inherit; height: inherit;
-  border-radius: 999px;
-	box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
-				inset 0 30px 0 rgba(239, 250, 180, 0.4),
-				inset -30px 0 0 rgba(255, 196, 140, 0.4),	
-				inset 0 -30px 0 rgba(245, 105, 145, 0.4);
-  animation: shadowsdancing 4s infinite;
-}
-.error-container > span:nth-of-type(2):before {
-	-webkit-transform: rotate(45deg);
-	   -moz-transform: rotate(45deg);
-			transform: rotate(45deg);
-}
-.screen-reader-text {
-    position: absolute;
-    top: -9999em;
-    left: -9999em;
-}
 
-
-/* demo stuff */
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+.nav{
+  background-color: #ffffff;
+  width: 80vw;
+  height: 60px;
+  position: sticky;
 }
-.error-body {
-  background-color: #416475;
+.side-div{
+  box-shadow: 0px 2px 2px 1px rgba(124, 122, 122, 0.329);
+}
+.lg-btn:hover{
+  font-weight: 600;
+  
+}
+.ln-div{
+ color: rgb(45 55 72);
+ height: 40px;
+ padding: 10px;
+}
+.ln-div:hover{
+  background: #d5d8df;
+  font-weight: 600;
+}
+table{
+  width: 100%;
+}
+.t-head{
+  background-color: rgb(224, 228, 231);
+  margin-top: 10px;
+  height: 50px;
+  font-size: .9rem;
+
+}
+.t-head th:first-child{
+  padding-left: 1rem;
+  border-radius: 0.375rem 0 0 0 ;
+}
+.t-head th:last-child{
+  border-radius: 0 0.375rem 0 0;
+}
+.t-body td:first-child{
+ padding-left: 1.5rem;
+}
+.t-body td{
+  height: 60px;
+  border-top: .5px solid #d5d8df;
+  color: rgb(45 55 72);
+  font-size: .875rem;
+}
+.table-div{
+  border:1px solid rgb(221, 212, 212);
+  border-radius: 0.375rem;
+}
+.lay-body{
+  background-color: rgb(247 250 252);
   height: 100vh;
-  overflow: hidden;
-}
-html, button, input, select, textarea {
-    font-family: 'Montserrat', Helvetica, sans-serif;
-    color: #92a4ad;
-}
-h1 {
-  text-align: center;
-  margin: 30px 15px;
-}
-
-
-
-/* KeyFrames */
-@keyframes shadowsdancing {
-  0% {
-    box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
-				inset 0 30px 0 rgba(239, 250, 180, 0.4),
-				inset -30px 0 0 rgba(255, 196, 140, 0.4),	
-				inset 0 -30px 0 rgba(245, 105, 145, 0.4);
-  }
-  25% {
-    box-shadow: inset 30px 0 0 rgba(245, 105, 145, 0.4),
-				inset 0 30px 0 rgba(209, 242, 165, 0.4),
-				inset -30px 0 0 rgba(239, 250, 180, 0.4),	
-				inset 0 -30px 0 rgba(255, 196, 140, 0.4);
-  }
-  50% {
-     box-shadow: inset 30px 0 0 rgba(255, 196, 140, 0.4),
-				inset 0 30px 0 rgba(245, 105, 145, 0.4),
-				inset -30px 0 0 rgba(209, 242, 165, 0.4),	
-				inset 0 -30px 0 rgba(239, 250, 180, 0.4);
-  }
-  75% {
-   box-shadow: inset 30px 0 0 rgba(239, 250, 180, 0.4),
-				inset 0 30px 0 rgba(255, 196, 140, 0.4),
-				inset -30px 0 0 rgba(245, 105, 145, 0.4),	
-				inset 0 -30px 0 rgba(209, 242, 165, 0.4);
-  }
-  100% {
-    box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
-				inset 0 30px 0 rgba(239, 250, 180, 0.4),
-				inset -30px 0 0 rgba(255, 196, 140, 0.4),	
-				inset 0 -30px 0 rgba(245, 105, 145, 0.4);
-  }
-}
-@keyframes colordancing {
-  0% {
-    color: #D1F2A5;
-  }
-  25% {
-    color: #F56991;
-  }
-  50% {
-    color: #FFC48C;
-  }
-  75% {
-    color: #EFFAB4;
-  }
-  100% {
-    color: #D1F2A5;
-  }
-}
-@keyframes colordancing2 {
-  0% {
-    color: #FFC48C;
-  }
-  25% {
-    color: #EFFAB4;
-  }
-  50% {
-    color: #D1F2A5;
-  }
-  75% {
-    color: #F56991;
-  }
-  100% {
-    color: #FFC48C;
-  }
 }

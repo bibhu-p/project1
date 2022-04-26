@@ -6,10 +6,20 @@ const Layout= ()=> {
 
   return (
     <>
-    <NavBar />
-    <div className="d-flex flex-row p-3">
-      <SideBar />
-      <Outlet />
+    <div className="d-flex ">
+      <div className=" w-25 side-div ">
+        <SideBar />
+      </div>
+      <div className=" d-flex flex-column">
+        <div className="nav-div sticky-top overflow-hidden">
+          <NavBar />
+        </div>
+        <div className="container lay-body">
+          <div className="container card mt-5 p-2">
+            <Outlet />
+          </div>
+        </div>
+      </div>
     </div>
     </>
   )

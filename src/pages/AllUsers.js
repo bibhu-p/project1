@@ -1,37 +1,65 @@
 import axios from 'axios';
-import {Table , Button} from 'react-bootstrap';
+import { useState , useEffect} from 'react';
+import { Button} from 'react-bootstrap';
+import { BiEditAlt } from "react-icons/bi";
+import { RiDeleteBinLine } from "react-icons/ri";
+import AllModal from '../Components/AllModal';
 
 const AllUsers =()=>{
-    const data = localStorage.getItem('authToken');
-    console.log(typeof(data));
+    
+    const [userData, setUserData] = useState([]);
+    const [allModalVisible, setAllModalVisible] = useState(false);
+    const [action, setAction] = useState('add')
+    const [index, setIndex] = useState(null)
 
-    axios.get('http://localhost:5000/api/user/find',{ headers: { 'auth-token': data } })
-    .then(function (response) {
-    //   setSpinner(false)
-    //   clear()
-    //   localStorage.setItem("loggedInData", JSON.stringify(response.data.data));
-    //   localStorage.setItem("authToken", JSON.stringify(response.data.token));
-      console.log(response);
-    //   navigate("/admin/dashboard");
-      
-    })
-    .catch(function (error) {
-    //   setSpinner(false)
-    //   clear()
-      return console.log(error);
-    })
+    const getData =()=>{
+      // console.log('get data function------');
+      const token = JSON.parse(localStorage.getItem('authToken'));
+      axios.get('http://localhost:5000/api/user/find',{ headers: { 'auth-token': token } })
+      .then((response)=>{
+        return setUserData(response.data);
+      })
+      .catch((error)=>{
+        return console.log(error);
+      })
+    }
+
+    useEffect(()=>{
+      getData()
+    },[])
 
     const createModal = ()=>{
-
+      setAllModalVisible(true)
+      setAction('add')
+    }
+  
+    const viewData = (i)=>{
+      setIndex(i)
+      setAction('edit')
+      setAllModalVisible(true)
+    }
+    
+    const onDelete = (i)=>{
+      const userDetails = userData[i];
+      let url = 'http://localhost:5000/api/user/delete/'+userDetails._id;
+      axios.delete(url)
+      .then((response)=>{
+        getData()
+        return console.log(response);
+      })
+      .catch((error)=>{
+        return console.log(error);
+      })
     }
     return(
         <>
         <div className='container'>
           <Button className='float-end' style={{"backgroundColor":'#7ea2e9',"color":"black","border":"none"}} onClick={createModal}>Add User</Button>
           <h3 className='text-center mb-3'>USERS DATA</h3>
-          <Table bordered  >
-            <thead >
-              <tr>
+          <div className='table-div mt-5'>
+          <table >
+            <thead>
+              <tr className='t-head'>
                 <th>SL NO</th>
                 <th>Name</th>
                 <th>E-mail</th>
@@ -42,20 +70,30 @@ const AllUsers =()=>{
                 <th>Action</th>
               </tr>
             </thead>
-            {/* <tbody>
-              {myState.map((data, i) => 
-                <tr key={i}>
+            <tbody>
+              {userData.length > 0 && userData.map((data, i) => 
+                <tr key={i} className='t-body'>
                   <td>{i + 1}</td>
                   <td>{data.name}</td>
-                  <td>{data.email}</td>
-                  <td>{data.phone}</td>
+                  <td>{data.email}</td> 
                   <td>{data.age}</td>
+                  <td>{data.adhaar}</td>
+                  <td>{data.phone}</td>
+                  <td>{data.address}</td>
                   <td><Button style={{"backgroundColor":"#b8ccf3", "border":"none"}} onClick={()=>viewData(i)} ><BiEditAlt color='black' /></Button><Button style={{"backgroundColor":"#b8ccf3", "border":"none", "marginLeft":"10px"}}  onClick={()=>onDelete(i)}><RiDeleteBinLine color='black' /></Button></td>
                 </tr>
               )}
-            </tbody> */}
-          </Table>
+            </tbody>
+          </table>
+          </div>
         </div>
+        {allModalVisible && <AllModal
+          setAllModalVisible = {setAllModalVisible}
+          action = {action}
+          userData = {userData}
+          getData = {getData}
+          editIndex={index}
+        />}
         </>
     )
 }
