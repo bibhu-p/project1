@@ -53,46 +53,47 @@ const Login = () => {
       return;
     }
 
-    // code for login
-    setSpinner(true);
+    // code for Login;
+    setSpinner(true)
 
     if(loginType ){
     axios.post('http://localhost:5000/api/admin/login', formValues)
-    .then(function (response) {
-      setSpinner(false)
-      clear()
-      localStorage.setItem("loggedInData", JSON.stringify(response.data.data));
-      localStorage.setItem("authToken", JSON.stringify(response.data.token));
-      console.log(response);
-      navigate("/admin/dashboard");
-      
-    })
-    .catch(function (error) {
-      setSpinner(false)
-      clear()
-      return console.log(error);
-    })
-  }else{
+      .then(function (response) {
+        setSpinner(false)
+        clear()
+        let type = 'user';
+        localStorage.setItem("loggedInData", JSON.stringify(response.data.data));
+        localStorage.setItem("authToken", JSON.stringify(response.data.token));
+        localStorage.setItem("userType", type);
+        console.log(response);
+        navigate("/admin/dashboard");
+        
+      })
+      .catch(function (error) {
+        setSpinner(false)
+        clear()
+        return console.log(error);
+      })
+    }else{
     // console.log(loginType);
     axios.post('http://localhost:5000/api/user/login', formValues)
-    .then(function (response) {
-      setSpinner(false)
-      clear()
-      localStorage.setItem("loggedInData", JSON.stringify(response.data.data));
-      localStorage.setItem("authToken", JSON.stringify(response.data.token));
-      console.log(response);
-      navigate("/user/dashboard");
+      .then(function (response) {
+        setSpinner(false)
+        clear()
+        let type = 'user';
+        localStorage.setItem("loggedInData", JSON.stringify(response.data.data));
+        localStorage.setItem("authToken", JSON.stringify(response.data.token));
+        localStorage.setItem("userType", JSON.stringify(type));
+        console.log(response);
+        navigate("/user/dashboard");
 
-    })
-    .catch(function (error) {
-      setSpinner(false)
-      clear()
-      return console.log(error);
-    });
-  }
-    // setTimeout(()=>{
-    //   setSpinner(false)
-    // }, 2000 )
+      })
+      .catch(function (error) {
+        setSpinner(false)
+        clear()
+        return console.log(error);
+      });
+    }
 
   };
   return (
@@ -105,13 +106,13 @@ const Login = () => {
           <div className='d-flex flex-row justify-content-evenly mb-3 p-1'>
             <div className="form-check">
               <input className="form-check-input" type="radio" name="flexRadioDisabled" onChange={(e)=>setLoginType(true)} />
-              <label className="form-check-label" for="flexRadioDisabled">
+              <label className="form-check-label" >
                 ADMIN
               </label>
             </div>
             <div className="form-check">
               <input className="form-check-input" type="radio" name="flexRadioDisabled" onChange={(e)=>setLoginType(false)} defaultChecked />
-              <label className="form-check-label" for="flexRadioCheckedDisabled">
+              <label className="form-check-label">
                 USER
               </label>
             </div>

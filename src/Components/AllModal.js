@@ -236,7 +236,7 @@ const AllModal = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Button className='btn-light cls-btn' onClick={() => props.setAllModalVisible(false)}>Close</Button>
-        <Button variant="primary" onClick={() => formSubmit()}>{props.action === 'add' ? 'Add' : 'Update'}
+        <Button className='register-btn ms-3 border-0' onClick={() => formSubmit()}>{props.action === 'add' ? 'Add' : 'Update'}
           {spinner && <Spinner animation="border" size="sm" variant="light" />}
         </Button>
       </Modal.Footer>

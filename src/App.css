@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
 @import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
 
-
+h3{
+  text-align: start;
+}
 /* Login And Register  */
 .input-valid:focus{
   box-shadow: none !important;
@@ -36,6 +38,7 @@ input[type = text],input[type=password]{
   background-color: #ffffff;
   width: 350px;
   height: 500px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .clr{
   background: #dbe2ee;
@@ -48,6 +51,7 @@ input[type = text],input[type=password]{
 }
 .register-btn{
   background: #718096;
+  width: 100px;
 }
 .register-btn:hover{
   background: #343c47 ;
@@ -55,6 +59,7 @@ input[type = text],input[type=password]{
 }
 .cls-btn{
   font-weight: 400;
+  width: 70px;
 }
 .cls-btn:hover{
   background: #eceef3;
@@ -63,26 +68,48 @@ input[type = text],input[type=password]{
 
 .nav{
   background-color: #ffffff;
-  width: 80vw;
-  height: 60px;
-  position: sticky;
+  width: auto;
+  /* height: 60px; */
+  /* position: sticky; */
 }
-.side-div{
-  box-shadow: 0px 2px 2px 1px rgba(124, 122, 122, 0.329);
+/* .nav-div{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+} */
+/* .side-div{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;    
+} */
+/* .lg-btn{
+  color: #ffffff;
+  width: 50px;
+  height: 36px;
+  background-color: #718096;
 }
 .lg-btn:hover{
   font-weight: 600;
+  color: #fff;
+  background: #414a57 ;
   
+} */
+/* .dropdown-button{
+  width: 45px;
+  height: 45px;
+  background-color: #718096;
+  border-radius: 40px;
+  border: none;
 }
-.ln-div{
+.dropdown{
+  position: fixed;
+  z-index: 1000;
+} */
+/* .ln-div{
  color: rgb(45 55 72);
  height: 40px;
  padding: 10px;
-}
-.ln-div:hover{
+} */
+/* .ln-div:hover{
   background: #d5d8df;
   font-weight: 600;
-}
+} */
 table{
   width: 100%;
 }
@@ -115,5 +142,27 @@ table{
 }
 .lay-body{
   background-color: rgb(247 250 252);
-  height: 100vh;
+  /* height: 100vh; */
+}
+/* .active{
+  font-weight: 600;
+} */
+.add-btn{
+  width: 100px;
+  height: 40px;
+  background-color: #718096;
+}
+.add-btn:focus{
+  background-color: #718096;
+}
+.add-btn:hover{
+  font-weight: 600;
+  background: #414a57 ;
+}
+.ed-btn{
+  background-color: #718096;
+}
+.ed-btn:hover{
+  font-weight: 600;
+  background: #414a57 ;
 }

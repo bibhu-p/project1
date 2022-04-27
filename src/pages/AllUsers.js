@@ -3,13 +3,14 @@ import { useState , useEffect} from 'react';
 import { Button} from 'react-bootstrap';
 import { BiEditAlt } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { FiUserPlus } from 'react-icons/fi';
 import AllModal from '../Components/AllModal';
 
 const AllUsers =()=>{
     
     const [userData, setUserData] = useState([]);
     const [allModalVisible, setAllModalVisible] = useState(false);
-    const [action, setAction] = useState('add')
+    const [action, setAction] = useState('add');
     const [index, setIndex] = useState(null)
 
     const getData =()=>{
@@ -54,8 +55,8 @@ const AllUsers =()=>{
     return(
         <>
         <div className='container'>
-          <Button className='float-end' style={{"backgroundColor":'#7ea2e9',"color":"black","border":"none"}} onClick={createModal}>Add User</Button>
-          <h3 className='text-center mb-3'>USERS DATA</h3>
+          <Button className='float-end mt-3 border-0 add-btn'  onClick={createModal}><FiUserPlus/> User</Button>
+          <h3 className='text-center mt-2 mb-3'>USERS DATA</h3>
           <div className='table-div mt-5'>
           <table >
             <thead>
@@ -80,7 +81,7 @@ const AllUsers =()=>{
                   <td>{data.adhaar}</td>
                   <td>{data.phone}</td>
                   <td>{data.address}</td>
-                  <td><Button style={{"backgroundColor":"#b8ccf3", "border":"none"}} onClick={()=>viewData(i)} ><BiEditAlt color='black' /></Button><Button style={{"backgroundColor":"#b8ccf3", "border":"none", "marginLeft":"10px"}}  onClick={()=>onDelete(i)}><RiDeleteBinLine color='black' /></Button></td>
+                  <td><button className='border-0 rounded ed-btn' onClick={()=>viewData(i)} ><BiEditAlt color='white' /></button><button  className='ms-3 border-0 rounded ed-btn' onClick={()=>onDelete(i)}><RiDeleteBinLine color='white' /></button></td>
                 </tr>
               )}
             </tbody>
