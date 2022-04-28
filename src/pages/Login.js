@@ -61,7 +61,7 @@ const Login = () => {
       .then(function (response) {
         setSpinner(false)
         clear()
-        let type = 'user';
+        let type = 'admin';
         localStorage.setItem("loggedInData", JSON.stringify(response.data.data));
         localStorage.setItem("authToken", JSON.stringify(response.data.token));
         localStorage.setItem("userType", type);

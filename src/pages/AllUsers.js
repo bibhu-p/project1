@@ -56,7 +56,7 @@ const AllUsers =()=>{
         <>
         <div className='container'>
           <Button className='float-end mt-3 border-0 add-btn'  onClick={createModal}><FiUserPlus/> User</Button>
-          <h3 className='text-center mt-2 mb-3'>USERS DATA</h3>
+          <h3 className=' mt-2 mb-3'>USERS DATA</h3>
           <div className='table-div mt-5'>
           <table >
             <thead>

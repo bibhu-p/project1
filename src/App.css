@@ -1,8 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
 @import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
 
-h3{
-  text-align: start;
+
+.dropdown-menu {
+  min-width: 5.5rem;
+  padding: 0.3rem 0;
+  font-size: .9rem;
+  font-family:sans-serif;
+  background-color: rgb(236, 235, 235);
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 0.25rem;
+}
+.dropdown-item {
+  padding: 0.25rem .5rem;
+}
+.dropdown-toggle::after{
+  content: none;
 }
 /* Login And Register  */
 .input-valid:focus{
@@ -15,154 +28,49 @@ h3{
   outline:1px solid rgb(255, 71, 71) !important;
   background: #e8f0fe !important; 
 }
-.reg-btn{
-  transition: all 0.3s ease-in-out;
-}
-.reg-btn:hover{
-  transform: translateY(-5px); 
-  transition: all 0.3s ease-in-out; 
-}
-.btn:focus{
-  box-shadow: none !important;
-}
-input[type = text],input[type=password]{
-  height: 36px;
-  font-size: 0.9rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-.page-body{
-  background-color: #d5d8df;
-  height: 100vh;
-}
-.home-body{
-  background-color: #ffffff;
-  width: 350px;
-  height: 500px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-}
-.clr{
-  background: #dbe2ee;
-}
-.login-btn{
-  background: #718096
-}
-.login-btn:hover{
-  background: #343c47 ;
-}
-.register-btn{
-  background: #718096;
-  width: 100px;
-}
-.register-btn:hover{
-  background: #343c47 ;
-  font-weight: 600;
-}
-.cls-btn{
-  font-weight: 400;
-  width: 70px;
-}
-.cls-btn:hover{
-  background: #eceef3;
-  font-weight: 600;
-}
+.btn:focus{ box-shadow: none !important;}
 
-.nav{
-  background-color: #ffffff;
-  width: auto;
-  /* height: 60px; */
-  /* position: sticky; */
-}
-/* .nav-div{
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-} */
-/* .side-div{
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;    
-} */
-/* .lg-btn{
-  color: #ffffff;
-  width: 50px;
-  height: 36px;
-  background-color: #718096;
-}
-.lg-btn:hover{
-  font-weight: 600;
-  color: #fff;
-  background: #414a57 ;
-  
-} */
-/* .dropdown-button{
-  width: 45px;
-  height: 45px;
-  background-color: #718096;
-  border-radius: 40px;
-  border: none;
-}
-.dropdown{
-  position: fixed;
-  z-index: 1000;
-} */
-/* .ln-div{
- color: rgb(45 55 72);
- height: 40px;
- padding: 10px;
-} */
-/* .ln-div:hover{
-  background: #d5d8df;
-  font-weight: 600;
-} */
-table{
-  width: 100%;
-}
-.t-head{
-  background-color: rgb(224, 228, 231);
-  margin-top: 10px;
-  height: 50px;
-  font-size: .9rem;
+h3{ text-align: start;}
+.reg-btn{ transition: all 0.3s ease-in-out;}
+.reg-btn:hover{transform: translateY(-5px); transition: all 0.3s ease-in-out; }
+input[type = text],input[type=password]{ height: 36px;font-size: 0.9rem;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
 
-}
-.t-head th:first-child{
-  padding-left: 1rem;
-  border-radius: 0.375rem 0 0 0 ;
-}
-.t-head th:last-child{
-  border-radius: 0 0.375rem 0 0;
-}
-.t-body td:first-child{
- padding-left: 1.5rem;
-}
-.t-body td{
-  height: 60px;
-  border-top: .5px solid #d5d8df;
-  color: rgb(45 55 72);
-  font-size: .875rem;
-}
-.table-div{
-  border:1px solid rgb(221, 212, 212);
-  border-radius: 0.375rem;
-}
-.lay-body{
-  background-color: rgb(247 250 252);
-  /* height: 100vh; */
-}
-/* .active{
-  font-weight: 600;
-} */
-.add-btn{
-  width: 100px;
-  height: 40px;
-  background-color: #718096;
-}
-.add-btn:focus{
-  background-color: #718096;
-}
-.add-btn:hover{
-  font-weight: 600;
-  background: #414a57 ;
-}
-.ed-btn{
-  background-color: #718096;
-}
-.ed-btn:hover{
-  font-weight: 600;
-  background: #414a57 ;
-}
+.lay-body{ background-color: rgb(247 250 252); }
+.page-body{ background-color: #d5d8df; height: 100vh;}
+.home-body{ background-color: #ffffff;width: 350px;height: 500px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;}
+
+.clr{ background: #dbe2ee;}
+.login-btn{background: #718096}
+.login-btn:hover{background: #343c47 ;}
+.register-btn{ background: #718096; width: 100px;}
+.register-btn:hover{background: #343c47 ;font-weight: 600;}
+.cls-btn{font-weight: 400;width: 70px;}
+.cls-btn:hover{background: #eceef3; font-weight: 600;}
+
+.nav-div{ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;}
+.side-div{ box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;}
+.active{ font-weight: 600;}
+
+
+
+.lg-btn:hover{ font-weight: 600; }
+
+table{ width: 100%;}
+.t-head{ background-color: rgb(224, 228, 231); margin-top: 10px; height: 50px; font-size: .9rem;}
+.t-head th:first-child{ padding-left: 1rem; border-radius: 0.375rem 0 0 0 ;}
+.t-head th:last-child{ border-radius: 0 0.375rem 0 0;}
+.t-body td:first-child{ padding-left: 1.5rem; }
+.t-body td{ height: 60px; border-top: .5px solid #d5d8df; color: rgb(45 55 72); font-size: .875rem;}
+.table-div{ border:1px solid rgb(221, 212, 212); border-radius: 0.375rem; }
+
+.add-btn{ width: 100px; height: 40px; background-color: #718096;}
+.add-btn:focus{ background-color: #718096; }
+.add-btn:hover{ font-weight: 600; background: #414a57;}
+.ed-btn{ background-color: #718096; }
+.ed-btn:hover{ font-weight: 600; background: #414a57 ;}
+.dd-btn{ width: 50px; height: 50px; border-radius: 50%; overflow: hidden; background: transparent;}
+
+.link{background-color:white;width: 160px;height: 40px;border-radius: .5rem;}
+.link:hover{ background-color: #c3cbd6;font-weight: 600;}
