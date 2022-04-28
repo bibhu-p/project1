@@ -9,7 +9,7 @@ const SideBar=() =>{
   const userType = localStorage.getItem('userType');
   return (
       <>
-         <div class="side-div container bg-white min-vh-100 ">
+         <div className="side-div container bg-white min-vh-100 ">
           {userType === 'admin'?
             <>
               <NavLink to="/admin/dashboard" activeClassName="active" className="  text-decoration-none text-dark fs-6  mb- rounded">
