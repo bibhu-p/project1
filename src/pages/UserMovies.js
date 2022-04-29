@@ -16,7 +16,6 @@ const UserMovies =()=>{
     const getMovieData =()=>{
         axios.get('http://localhost:5000/api/movie/find',{ headers: { 'auth-token': token } })
         .then((response)=>{
-          localStorage.setItem('movieData',JSON.stringify(response.data));
           return setMovieData(response.data);
         })
         .catch((error)=>{
@@ -25,7 +24,7 @@ const UserMovies =()=>{
       }
       useEffect(()=>{
         getMovieData()
-      })
+      },[])
 
       const viewData = (i)=>{
         setIndex(i)

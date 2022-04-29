@@ -19,8 +19,6 @@ function App() {
             <Route path="/admin/dashboard" element={<AdminDashBoard />} />
             <Route path="/admin/users" element={<AllUsers />} />
             <Route path="/admin/movies" element={<AdminMovies />} />
-          </Route>
-          <Route element={<PrivateRoute />}>
             <Route path="/user/dashboard" element={<UserDashBoard />}></Route>
             <Route path="/user/Movies" element={<UserMovies />}></Route>
           </Route>
