@@ -1,64 +1,74 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import SelectMovieModal from "../Components/SelectMovieModal";
+import UpdateModal from "../Components/UpdateModal";
 
 const UserDashBoard = () => {
     const data = JSON.parse(localStorage.getItem('loggedInData'));
     const [movieList, setMovieList] = useState([]);
-    const [modal, setModal] = useState(false)
-   
-    const getAllData =()=>{
-        let url = 'http://localhost:5000/api/user/find/'+data._id;
+    const [modal, setModal] = useState(false);
+    const [updateModalVisible, setUpdateModalVisible] = useState(false);
+    const [userInfo, setUserInfo] = useState([]);
+
+    const getAllData = () => {
+        let url = 'http://localhost:5000/api/user/find/' + data._id;
         axios.get(url)
-        .then((response)=>{
-           setMovieList(response.data.movie);
-        })
-        .catch((error)=>{
-           console.log(error);
-        })
-      }
-      useEffect(()=>{
+            .then((response) => {
+                setUserInfo(response.data);
+                setMovieList(response.data.movie);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+    useEffect(() => {
         getAllData()
-      },[])
+    }, [])
 
     const onAdd = () => {
-       setModal(true)
+        setModal(true)
+    }
+    const onUpdate = () => {
+        setUpdateModalVisible(true)
     }
 
     return (
         <>
-            <div className="container m-5 ">
-            {/* User Details */}
-                <div className="row mb-3">
+            <div className="container m-3 p-2 ">
+                {/* User Details */}
+                <div className="row pb-2">
                     <div className="col">
                         <div className="card nav-div w-75 ">
                             <div className="card-body">
                                 <h5 className="card-title">Details</h5>
-                                <p className="card-text">Name : {data.name}</p>
-                                <p className="card-text">Email : {data.email}</p>
+                                <p className="card-text">Name : {userInfo.name}</p>
+                                <p className="card-text">Email : {userInfo.email}</p>
                                 <button className="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample">
                                     Full Details
+                                </button>
+                                <button className="btn btn-secondary float-end " onClick={onUpdate}>
+                                    Edit
                                 </button>
                                 <div className="collapse" id="collapseExample" >
                                     <div className="card card-body mt-2 p-1">
                                         <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3'>
                                             <div className="col">
-                                                <p className="ms-1 p-1">Name: {data.name}</p>
+                                                <p className="ms-1 p-1">Name: {userInfo.name}</p>
                                             </div>
                                             <div className="col">
-                                                <p className="ms-1 p-1">Email: {data.email}</p>
+                                                <p className="ms-1 p-1">Email: {userInfo.email}</p>
                                             </div>
                                             <div className="col">
-                                                <p className="ms-1 p-1">Age: {data.age}</p>
+                                                <p className="ms-1 p-1">Age: {userInfo.age}</p>
                                             </div>
                                             <div className="col">
-                                                <p className="ms-1 p-1">Adhaar: {data.adhaar} </p>
+                                                <p className="ms-1 p-1">Adhaar: {userInfo.adhaar} </p>
                                             </div>
                                             <div className="col">
-                                                <p className="ms-1 p-1">Phone: {data.phone} </p>
+                                                <p className="ms-1 p-1">Phone: {userInfo.phone} </p>
                                             </div>
                                             <div className="col">
-                                                <p className="ms-1 p-1">Address: {data.address} </p>
+                                                <p className="ms-1 p-1">Address: {userInfo.address} </p>
                                             </div>
                                         </div>
                                     </div>
@@ -68,22 +78,22 @@ const UserDashBoard = () => {
                     </div>
 
                 </div>
-            {/* Movie details */}
-                <div className="row mt-5">
+                {/* Movie details */}
+                <div className="row mt-3">
                     <div className="col">
                         <div className="card nav-div w-75">
-                            <div className="card-body">
-                                <h5 className="card-title">Favorite Movies</h5>
-                                <p className="card-text"> No of Movies : {data.movie.length}</p>
-                                <button className="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseMovie">
-                                    Movie Details
-                                </button>
-                                <button className="btn btn-secondary float-end " onClick={onAdd}>
-                                    Add Movies
-                                </button>
-                                <div className="collapse" id="collapseMovie" >
-                                {movieList.map((data) =>
-                                    <div className="card card-body mt-2 p-1">
+                            <div className="card-body" style={{maxHeight: '315px',overflow: 'auto'}}>
+                            <h5 className="card-title">Favorite Movies</h5>
+                            <p className="card-text"> No of Movies : {movieList.length}</p>
+                            <button className="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseMovie">
+                                Movie Details
+                            </button>
+                            <button className="btn btn-secondary float-end " onClick={onAdd}>
+                                Add Movies
+                            </button>
+                            <div className="collapse" id="collapseMovie" >
+                                {movieList.map((data, i) =>
+                                    <div key={i} className="card card-body mt-2 p-1">
                                         <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3'>
                                             <div className="col">
                                                 <p className="ms-1 p-1"><span className="fw-bold">Name:</span> {data.name} </p>
@@ -103,19 +113,29 @@ const UserDashBoard = () => {
                                         </div>
                                     </div>
                                 )}
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {/* Modal */}
-            {modal && <SelectMovieModal
-            setModal = {setModal}
-            userData = {data}
-            getAllData = {getAllData}
-            />
-            }
+        </div>
+            {/* Modals */ }
+    {
+        modal && <SelectMovieModal
+            setModal={setModal}
+            userData={data}
+            getAllData={getAllData}
+        />
+    }
+    {
+        updateModalVisible &&
+        <UpdateModal
+            setUpdateModalVisible={setUpdateModalVisible}
+            userData={userInfo}
+            getAllData={getAllData}
+
+        />
+    }
         </>
     )
 }

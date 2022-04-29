@@ -3,7 +3,7 @@ const AdminDashBoard = () => {
     // console.log(data);
     return (
         <>
-            <div className="container m-5 ">
+            <div className="container m-3 p-2 ">
                 <div className="row mb-3">
                     <div className="col">
                         <div className="card nav-div w-75 ">
