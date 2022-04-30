@@ -5,10 +5,14 @@ import UpdateModal from "../Components/UpdateModal";
 
 const UserDashBoard = () => {
     const data = JSON.parse(localStorage.getItem('loggedInData'));
+    const token = JSON.parse(localStorage.getItem('authToken'));
+
     const [movieList, setMovieList] = useState([]);
+    const [movieListData, setMovieListData] = useState([]);
     const [modal, setModal] = useState(false);
     const [updateModalVisible, setUpdateModalVisible] = useState(false);
     const [userInfo, setUserInfo] = useState([]);
+    const [option, setOption] = useState(null)
 
     const getAllData = () => {
         let url = 'http://localhost:5000/api/user/find/' + data._id;
@@ -25,8 +29,30 @@ const UserDashBoard = () => {
         getAllData()
     }, [])
 
+
+    const getMovieData = async () => {
+       await axios.get('http://localhost:5000/api/movie/find', { headers: { 'auth-token': token } })
+            .then((response) => {
+                setMovieListData(response.data);
+                let options = [{value:null, label:"Choose Movie"}]
+
+                response.data.map(val => {
+                    options =[...options, { value: val._id, label: val.name }]
+                })
+                return options;
+            })
+            .then((res)=>{
+                setOption(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     const onAdd = () => {
+        getMovieData()
         setModal(true)
+
     }
     const onUpdate = () => {
         setUpdateModalVisible(true)
@@ -82,60 +108,62 @@ const UserDashBoard = () => {
                 <div className="row mt-3">
                     <div className="col">
                         <div className="card nav-div w-75">
-                            <div className="card-body" style={{maxHeight: '315px',overflow: 'auto'}}>
-                            <h5 className="card-title">Favorite Movies</h5>
-                            <p className="card-text"> No of Movies : {movieList.length}</p>
-                            <button className="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseMovie">
-                                Movie Details
-                            </button>
-                            <button className="btn btn-secondary float-end " onClick={onAdd}>
-                                Add Movies
-                            </button>
-                            <div className="collapse" id="collapseMovie" >
-                                {movieList.map((data, i) =>
-                                    <div key={i} className="card card-body mt-2 p-1">
-                                        <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3'>
-                                            <div className="col">
-                                                <p className="ms-1 p-1"><span className="fw-bold">Name:</span> {data.name} </p>
-                                            </div>
-                                            <div className="col">
-                                                <p className="ms-1 p-1"><span className="fw-bold">Director: </span>{data.director}</p>
-                                            </div>
-                                            <div className="col">
-                                                <p className="ms-1 p-1"><span className="fw-bold">Producer: </span>{data.producer}</p>
-                                            </div>
-                                            <div className="col">
-                                                <p className="ms-1 p-1"><span className="fw-bold">Hero: </span>{data.hero} </p>
-                                            </div>
-                                            <div className="col">
-                                                <p className="ms-1 p-1"><span className="fw-bold">Heroine:</span>{data.heroine} </p>
+                            <div className="card-body" style={{ maxHeight: '315px', overflow: 'auto' }}>
+                                <h5 className="card-title">Favorite Movies</h5>
+                                <p className="card-text"> No of Movies : {movieList.length}</p>
+                                <button className="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseMovie">
+                                    Movie Details
+                                </button>
+                                <button className="btn btn-secondary float-end " onClick={() => onAdd()}>
+                                    Add Movies
+                                </button>
+                                <div className="collapse" id="collapseMovie" >
+                                    {movieList.map((data, i) =>
+                                        <div key={i} className="card card-body mt-2 p-1">
+                                            <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3'>
+                                                <div className="col">
+                                                    <p className="ms-1 p-1"><span className="fw-bold">Name:</span> {data.name} </p>
+                                                </div>
+                                                <div className="col">
+                                                    <p className="ms-1 p-1"><span className="fw-bold">Director: </span>{data.director}</p>
+                                                </div>
+                                                <div className="col">
+                                                    <p className="ms-1 p-1"><span className="fw-bold">Producer: </span>{data.producer}</p>
+                                                </div>
+                                                <div className="col">
+                                                    <p className="ms-1 p-1"><span className="fw-bold">Hero: </span>{data.hero} </p>
+                                                </div>
+                                                <div className="col">
+                                                    <p className="ms-1 p-1"><span className="fw-bold">Heroine:</span>{data.heroine} </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )}
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-            {/* Modals */ }
-    {
-        modal && <SelectMovieModal
-            setModal={setModal}
-            userData={data}
-            getAllData={getAllData}
-        />
-    }
-    {
-        updateModalVisible &&
-        <UpdateModal
-            setUpdateModalVisible={setUpdateModalVisible}
-            userData={userInfo}
-            getAllData={getAllData}
+            {/* Modals */}
+            {
+                modal && <SelectMovieModal
+                    setModal={setModal}
+                    userData={userInfo}
+                    getAllData={getAllData}
+                    options={option}
+                    movieListData={movieListData}
+                />
+            }
+            {
+                updateModalVisible &&
+                <UpdateModal
+                    setUpdateModalVisible={setUpdateModalVisible}
+                    userData={userInfo}
+                    getAllData={getAllData}
 
-        />
-    }
+                />
+            }
         </>
     )
 }

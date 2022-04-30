@@ -12,8 +12,13 @@ const SideBar = () => {
   return (
     <>
       <div className="side-div bg-white min-vh-100 p-2" style={{zIndex:"1024"}}>
-        <div style={{position:'sticky',top:"1.2rem"}} className='d-flex flex-column'>
-          <div className="mb-2 ms-auto "><button style={{border: 'none',backgroundColor: '#fff'}}><AiOutlineMenu color='black'/></button></div>
+        <div style={{position:'sticky'}} className='d-flex flex-column'>
+          <div className="mb-2 justify-content-center ">
+          <img style={{width:'120px',height:'80px'}} src="https://i.pinimg.com/736x/de/a0/f3/dea0f3b7f480b1151c08db4a402a43b9.jpg"/>
+          {/* <button style={{border: 'none',backgroundColor: '#fff'}}>
+          <AiOutlineMenu className='ms-3' color='black'/>
+          </button> */}
+          </div>
           {userType === 'admin' ?
             <>
               <NavLink to="/admin/dashboard" activeClassName="active" className="  text-decoration-none text-dark fs-6  mb- rounded">
