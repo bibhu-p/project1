@@ -32,13 +32,42 @@ const SelectMovieModal = (props) => {
                 })
         })
 
-        // let body = {
-        //     movie: movieIds
-        // }
-        // console.log(body)
+        // movieIds.forEach((id)=>{
+        //     let body = {
+        //         movie: id
+        //     }
+        //     console.log(body)
 
+        //         // let url = 'http://localhost:5000/api/user/update/movie/' + props.userData._id;
+        //         // axios.put(url, body)
+        //         //         .then((response) => {
+        //         //             setSpinner(false)
+        //         //             console.log(response);
+        //         //             // props.getAllData()
+        //         //             props.setModal(false)
+        //         //         })
+        //         //         .catch((error) => {
+        //         //             setSpinner(false)
+        //         //             console.log(error);
+        //         //             props.setModal(false)
+        //         //         })
+                
+        //         let url = 'http://localhost:5000/api/user/update/' + props.userData._id;
+        //             axios.put(url, body)
+        //                 .then((response) => {
+        //                     setSpinner(false)
+        //                     // props.getAllData()
+        //                     props.setModal(false)
+        //                 })
+        //                 .catch((error) => {
+        //                     setSpinner(false)
+        //                     console.log(error);
+        //                     props.setModal(false)
+        //                 })
+        // })
 
     }
+    
     return (
         <Modal show={true}
             backdrop="static"

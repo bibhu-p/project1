@@ -90,10 +90,14 @@ table{ width: 100%;}
   border: 1px solid rgba(0,0,0,.15);
   border-radius: 0.5rem;
 }
-
+.m-btn{
+margin-top: 1.5rem;
+margin-bottom: 1rem;
+margin-left: .2rem;
+}
 .hide{
-  margin-top: 0.9rem;
-  width: 45px;
+  margin-top: 0.5rem;
+  width: 40px;
 }
 .hide:hover{
   background-color: #d7dbe0df;

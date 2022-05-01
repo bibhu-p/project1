@@ -15,6 +15,7 @@ const SideBar = () => {
     showDash:'link p-2 mb-2 d-flex justify-content-start',
     hide:'d-none',
     show:'',
+    aBtn:'m-btn'
   }
 
   const userType = localStorage.getItem('userType');
@@ -23,8 +24,8 @@ const SideBar = () => {
       <div className="side-div bg-white min-vh-100 p-2" style={{zIndex:"1024"}}>
         <div style={{position:'sticky'}} className='d-flex flex-column'>
           <div className="mb-2 justify-content-center ">
-          <img style={{width:'120px',height:'80px'}} className={sideActive? classes.show : classes.hide} src="https://i.pinimg.com/736x/de/a0/f3/dea0f3b7f480b1151c08db4a402a43b9.jpg"/>
-          <button onClick={()=> sideActive?setSideActive(false):setSideActive(true)} style={{border: 'none',backgroundColor: '#fff'}}>
+          <img style={{width:'120px',height:'80px'}} alt='logo' className={sideActive? classes.show : classes.hide} src="https://i.pinimg.com/736x/de/a0/f3/dea0f3b7f480b1151c08db4a402a43b9.jpg"/>
+          <button onClick={()=> sideActive?setSideActive(false):setSideActive(true)} className={sideActive? classes.show : classes.aBtn} style={{border: 'none',backgroundColor: '#fff'}}>
           <AiOutlineMenu  color='black'/>
           </button>
           </div>
