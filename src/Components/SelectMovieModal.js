@@ -1,41 +1,14 @@
 import { Modal, Button, Spinner } from 'react-bootstrap';
 import axios from "axios";
 import Select from 'react-select';
-
 import { useState } from "react";
-import { computeHeadingLevel } from '@testing-library/react';
-
 const SelectMovieModal = (props) => {
 
-    const token = JSON.parse(localStorage.getItem('authToken'));
+    // const token = JSON.parse(localStorage.getItem('authToken'));
 
     const [spinner, setSpinner] = useState(false);
-    const [movies, setMovies] = useState([])
-    const [movieDetails, setMovieDetails] = useState([])
-    // const movieDetails = [];
-
-    // console.log(movieList)
-
-    // const getMovieData = () => {
-    //     axios.get('http://localhost:5000/api/movie/find', { headers: { 'auth-token': token } })
-    //         .then((response) => {
-    //             setMovieList(response.data);
-
-    //             response.data.map(val=>{
-    //                 options= [...options,{value:val._id, label:val.name}]
-    //             })
-    //             console.log(options);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         })
-    // }
-    // useEffect(() => {
-    //     // getMovieData()
-    // }, [])
-
-
-
+    const [movies, setMovies] = useState([]);
+    const [movieDetails, setMovieDetails] = useState([]);
 
     const formSubmit = () => {
         // let movieIds = [];
@@ -87,11 +60,9 @@ const SelectMovieModal = (props) => {
                             // console.log(movieDetails)
                             setMovieDetails(movieDetails)
                         }
-
                     }}
                     options={props.options ? props.options : []}
                     isMulti={true}
-
                 />
 
                 {movieDetails && movieDetails.map((val, i) => {
@@ -119,8 +90,8 @@ const SelectMovieModal = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button className='btn-light cls-btn' onClick={() => props.setModal(false)}>Close</Button>
-                <Button className='register-btn border-0' onClick={() => formSubmit()}>Add
-                    {spinner && <Spinner animation="border" size="sm" variant="light" />}
+                <Button className='register-btn border-0' onClick={() => formSubmit()}>
+                {spinner ? <Spinner animation="border" size="sm" variant="light" />:<span className='text-white ms-2 '>Add</span>}
                 </Button>
             </Modal.Footer>
         </Modal>

@@ -76,7 +76,7 @@ const UserDashBoard = () => {
                                     Edit
                                 </button>
                                 <div className="collapse" id="collapseExample" >
-                                    <div className="card card-body mt-2 p-1">
+                                    <div className="card nav-div card-body mt-2 p-1">
                                         <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3'>
                                             <div className="col">
                                                 <p className="ms-1 p-1">Name: {userInfo.name}</p>
@@ -119,7 +119,7 @@ const UserDashBoard = () => {
                                 </button>
                                 <div className="collapse" id="collapseMovie" >
                                     {movieList.map((data, i) =>
-                                        <div key={i} className="card card-body mt-2 p-1">
+                                        <div key={i} className="card nav-div card-body mt-2 p-1">
                                             <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3'>
                                                 <div className="col">
                                                     <p className="ms-1 p-1"><span className="fw-bold">Name:</span> {data.name} </p>
