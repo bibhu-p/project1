@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SelectMovieModal from "../Components/SelectMovieModal";
 import UpdateModal from "../Components/UpdateModal";
+import { RiVideoAddLine } from "react-icons/ri";
+import { FiEdit } from "react-icons/fi";
+
 
 const UserDashBoard = () => {
     const data = JSON.parse(localStorage.getItem('loggedInData'));
@@ -73,7 +76,7 @@ const UserDashBoard = () => {
                                     Full Details
                                 </button>
                                 <button className="btn btn-secondary float-end " onClick={onUpdate}>
-                                    Edit
+                                    <FiEdit/>
                                 </button>
                                 <div className="collapse" id="collapseExample" >
                                     <div className="card nav-div card-body mt-2 p-1">
@@ -115,7 +118,7 @@ const UserDashBoard = () => {
                                     Movie Details
                                 </button>
                                 <button className="btn btn-secondary float-end " onClick={() => onAdd()}>
-                                    Add Movies
+                                    <RiVideoAddLine className="me-1"/>Movies
                                 </button>
                                 <div className="collapse" id="collapseMovie" >
                                     {movieList.map((data, i) =>

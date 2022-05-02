@@ -7,7 +7,7 @@ import {AiOutlineMenu} from 'react-icons/ai';
 
 const SideBar = () => {
 
-  const [sideActive, setSideActive] = useState(false);
+  const [sideActive, setSideActive] = useState(true);
   
   const classes={
     dash:"link  p-2 mb-1 d-flex align-self-center justify-content-start",
